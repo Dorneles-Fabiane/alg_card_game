@@ -1,6 +1,9 @@
 //Array delcaration
 var cards = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"];
 var suits = ["D", "H", "S", "C"];
+var vPlayer = [];
+var vComp = [];
+var vComputer = [];
 var deck = new Array();
 
 //Create an array to unite the cards and suits.
@@ -24,63 +27,58 @@ function getDeck()
 //Select a card randomly and show it on the screen
 function selectCard()
 {
-  res = document.querySelector('div#figura');
-  res.style.textAlign = 'center';
-	
-  var img = document.createElement('img');
-  img.setAttribute('id','cards');
-  img.setAttribute('width',172);
-  img.setAttribute('height',264);
+  playerCardImg = document.querySelector('div#playerCardImg');
+  playerCardImg.style.textAlign = 'center';
+  var imgP = document.createElement('img');
+  imgP.setAttribute('id','cards');
+  imgP.setAttribute('width',172);
+  imgP.setAttribute('height',264);
 
   var card = getRndInteger(1,13);
   var naipe = makeid (1);
   var cards = card + naipe;
-  res.innerHTML = "";
-  img.setAttribute('src', 'img/' + cards + '.png');
+  playerCardImg.innerHTML = "Player";
+  imgP.setAttribute('src', 'img/' + cards + '.png');
 
   deck.splice(deck.indexOf(cards), 1);
 
-  res.appendChild(img);
+  playerCardImg.appendChild(imgP);
+  vPlayer.push(card) //Add de value of the card to the players array
+
+
+    computerCardImg = document.querySelector('div#computerCardImg');
+    computerCardImg.style.textAlign = 'center';
+    var imgC = document.createElement('img');
+    imgC.setAttribute('id','cards');
+    imgC.setAttribute('width',172);
+    imgC.setAttribute('height',264);
+  
+    var card = getRndInteger(1,13);
+    var naipe = makeid (1);
+    var cards = card + naipe;
+    computerCardImg.innerHTML = "Computer";
+    imgC.setAttribute('src', 'img/' + cards + '.png');
+  
+    deck.splice(deck.indexOf(cards), 1);
+  
+    computerCardImg.appendChild(imgC);
+    vComputer.push(card) //Add de value of the card to the computer array
+  
 }
-/*
-function selectCardComputer()
-{
-  res = document.querySelector('div#figura');
-  res.style.textAlign = 'center';
-  var img = document.createElement('img');
-  img.setAttribute('id','cards');
-  img.setAttribute('width',172);
-  img.setAttribute('height',264);
-
-  var card = getRndInteger(1,13);
-  var naipe = makeid (1);
-  var cards = card + naipe;
-  res.innerHTML = "";
-  img.setAttribute('src', 'img/' + cards + '.png');
-
-  var vet = deck.splice(deck.indexOf(cards), 1);
-
-
-  alert(cards);
-  alert(vet);
-
-  res.appendChild(img);
-}
-*/
 
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
 function makeid(length) {
-    var result = '';
+    var playerCardImgult = '';
     var characters = 'CDHS';
     var charactersLength = characters.length;
     
-    for ( var i = 0; i < length; i++ ) {
-       result = characters.charAt(Math.floor(Math.random() * charactersLength));
+    for ( var cont = 0; cont < length; cont++ ) {
+       playerCardImgult = characters.charAt(Math.floor(Math.random() * charactersLength));
     }
-    return result;
+    return playerCardImgult;
  }
 
  function load()
