@@ -2,7 +2,6 @@
 var cards = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"];
 var suits = ["D", "H", "S", "C"];
 var vPlayer = [];
-var vComp = [];
 var vComputer = [];
 var deck = new Array();
 
@@ -21,8 +20,6 @@ function getDeck()
 	}
 	return deck;
 }
-///////////////////////////////////////////////////////////////////////////
-
 
 //Select a card randomly and show it on the screen
 function selectCard()
