@@ -24,9 +24,9 @@ function getDeck()
 //Select a card randomly and show it on the screen
 function selectCard()
 {
-  response = document.querySelector('div#response');
   res = document.querySelector('div#figura');
   res.style.textAlign = 'center';
+	
   var img = document.createElement('img');
   img.setAttribute('id','cards');
   img.setAttribute('width',172);
@@ -35,7 +35,6 @@ function selectCard()
   var card = getRndInteger(1,13);
   var naipe = makeid (1);
   var cards = card + naipe;
-  //response.innerHTML = "\nCarta do Jogador";
   res.innerHTML = "";
   img.setAttribute('src', 'img/' + cards + '.png');
 
