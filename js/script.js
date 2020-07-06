@@ -21,10 +21,9 @@ function getDeck() {
 }
 
 //Select a card randomly and show it on the screen
-function selectCard() {
+function selectCards() {
 
   playerCardImg = document.querySelector('div#playerCardImg');
-  playerCardImg.style.textAlign = 'center';
   var imgP = document.createElement('img');
   imgP.setAttribute('id','img');
   imgP.setAttribute('width',172);
@@ -38,7 +37,23 @@ function selectCard() {
   playerCardImg.appendChild(imgP);
 
   deck.splice(deck.indexOf(card), 1);
-  vComputer.push(card) //Add the value of the card to the players array
+  vPlayer.push(card) //Add the value of the card to the players array
+
+  computerCardImg = document.querySelector('div#computerCardImg');
+  var imgC = document.createElement('img');
+  imgC.setAttribute('id','img');
+  imgC.setAttribute('width',172);
+  imgC.setAttribute('height',264);
+
+  var index = getRandomNumber(0, deck.length-1);
+  var card = deck[index];
+  
+  computerCardImg.innerHTML = "";
+  imgC.setAttribute('src', 'img/' + card + '.png');
+  computerCardImg.appendChild(imgC);
+
+  deck.splice(deck.indexOf(card), 1);
+  vComputer.push(card)
 }
 
 function createImg() {
@@ -54,3 +69,6 @@ function load() {
 }
 
 window.onload = load;
+
+btnSelectCard = document.querySelector('button#btnSelectCard');
+btnSelectCard.addEventListener('click', selectCards);
