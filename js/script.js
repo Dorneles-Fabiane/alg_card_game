@@ -21,7 +21,7 @@ function getDeck() {
 }
 
 //Select a card randomly and show it on the screen
-function selectCard () {
+function selectCard() {
 
   playerCardImg = document.querySelector('div#playerCardImg');
   playerCardImg.style.textAlign = 'center';
@@ -39,6 +39,10 @@ function selectCard () {
 
   deck.splice(deck.indexOf(card), 1);
   vComputer.push(card) //Add the value of the card to the players array
+}
+
+function createImg() {
+  
 }
 
 function getRandomNumber(min, max) { 
