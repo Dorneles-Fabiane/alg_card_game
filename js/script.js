@@ -19,13 +19,9 @@ function getDeck() {
 	}
 	return deck;
 }
-///////////////////////////////////////////////////////////////////////////
-
 
 //Select a card randomly and show it on the screen
 function selectCard () {
-
-  var index = getRandomNumber(0, deck.length-1);
 
   playerCardImg = document.querySelector('div#playerCardImg');
   playerCardImg.style.textAlign = 'center';
@@ -34,10 +30,11 @@ function selectCard () {
   imgP.setAttribute('width',172);
   imgP.setAttribute('height',264);
 
+  var index = getRandomNumber(0, deck.length-1);
   var card = deck[index];
   
-  computerCardImg.innerHTML = card;
-  var showimg = imgP.setAttribute('src', 'img/' + card + '.png');
+  playerCardImg.innerHTML = "";
+  imgP.setAttribute('src', 'img/' + card + '.png');
   playerCardImg.appendChild(imgP);
 
   deck.splice(deck.indexOf(showimg), 1);
