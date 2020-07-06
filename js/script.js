@@ -37,7 +37,7 @@ function selectCard () {
   imgP.setAttribute('src', 'img/' + card + '.png');
   playerCardImg.appendChild(imgP);
 
-  deck.splice(deck.indexOf(showimg), 1);
+  deck.splice(deck.indexOf(card), 1);
   vComputer.push(card) //Add the value of the card to the players array
 }
 
