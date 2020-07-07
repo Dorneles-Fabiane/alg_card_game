@@ -5,6 +5,8 @@ var vPlayer = [];
 var vComputer = [];
 var deck = new Array();
 
+var c = 1;
+
 //Create an array to unite the cards and suits.
 function getDeck() {
 
@@ -29,35 +31,38 @@ function selectCards() {
   imgP.setAttribute('width',172);
   imgP.setAttribute('height',264);
 
-  var index = getRandomNumber(0, deck.length-1);
-  var card = deck[index];
+  if (c <= 10) {
+    var index = getRandomNumber(0, deck.length-1);
+    var card = deck[index];
   
-  playerCardImg.innerHTML = "";
-  imgP.setAttribute('src', 'img/' + card + '.png');
-  playerCardImg.appendChild(imgP);
+    playerCardImg.innerHTML = "";
+    imgP.setAttribute('src', 'img/' + card + '.png');
+    playerCardImg.appendChild(imgP);
 
-  deck.splice(deck.indexOf(card), 1);
-  vPlayer.push(card) //Add the value of the card to the players array
+    deck.splice(deck.indexOf(card), 1);
+    vPlayer.push(card) //Add the value of the card to the players array
 
-  computerCardImg = document.querySelector('div#computerCardImg');
-  var imgC = document.createElement('img');
-  imgC.setAttribute('id','img');
-  imgC.setAttribute('width',172);
-  imgC.setAttribute('height',264);
+    computerCardImg = document.querySelector('div#computerCardImg');
+    var imgC = document.createElement('img');
+    imgC.setAttribute('id','img');
+    imgC.setAttribute('width',172);
+    imgC.setAttribute('height',264);
 
-  var index = getRandomNumber(0, deck.length-1);
-  var card = deck[index];
+    var index = getRandomNumber(0, deck.length-1);
+    var card = deck[index];
   
-  computerCardImg.innerHTML = "";
-  imgC.setAttribute('src', 'img/' + card + '.png');
-  computerCardImg.appendChild(imgC);
+    computerCardImg.innerHTML = "";
+    imgC.setAttribute('src', 'img/' + card + '.png');
+    computerCardImg.appendChild(imgC);
 
-  deck.splice(deck.indexOf(card), 1);
-  vComputer.push(card)
-}
-
-function createImg() {
-  
+    deck.splice(deck.indexOf(card), 1);
+    vComputer.push(card)
+    c++
+  }
+  else {
+    alert("tudo ok")
+    //mostrar resultados
+  }
 }
 
 function getRandomNumber(min, max) { 
