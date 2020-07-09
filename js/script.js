@@ -5,7 +5,7 @@ var vPlayer = [];
 var vComputer = [];
 var deck = new Array();
 
-var c = 1;
+var c = 0;
 
 //Create an array to unite the cards and suits.
 function getDeck() {
@@ -27,11 +27,19 @@ function selectCards() {
 
   playerCardImg = document.querySelector('div#playerCardImg');
   var imgP = document.createElement('img');
+
   imgP.setAttribute('id','img');
   imgP.setAttribute('width',172);
   imgP.setAttribute('height',264);
 
-  if (c <= 10) {
+  computerCardImg = document.querySelector('div#computerCardImg');
+  var imgC = document.createElement('img');
+
+  imgC.setAttribute('id','img');
+  imgC.setAttribute('width',172);
+  imgC.setAttribute('height',264);
+
+  if (c < 10) {
     var index = getRandomNumber(0, deck.length-1);
     var card = deck[index];
   
@@ -40,30 +48,37 @@ function selectCards() {
     playerCardImg.appendChild(imgP);
 
     deck.splice(deck.indexOf(card), 1);
-    vPlayer.push(card) //Add the value of the card to the players array
-
-    computerCardImg = document.querySelector('div#computerCardImg');
-    var imgC = document.createElement('img');
-    imgC.setAttribute('id','img');
-    imgC.setAttribute('width',172);
-    imgC.setAttribute('height',264);
+    vPlayer.push(Number(card.replace(/\D+/g, ""))) //Add the value of the card to the players array
 
     var index = getRandomNumber(0, deck.length-1);
     var card = deck[index];
   
-    computerCardImg.innerHTML = "";
+    computerCardImg.innerHTML = "X";
     imgC.setAttribute('src', 'img/' + card + '.png');
     computerCardImg.appendChild(imgC);
 
     deck.splice(deck.indexOf(card), 1);
-    vComputer.push(card)
-    c++
+    vComputer.push(Number(card.replace(/\D+/g, "")));
+
+  /* ------------ */ 
+
+    if (vPlayer[c] > vComputer[c]) {
+      alert("Jogador ganhou!");
+    }
+    else if (vPlayer[c] < vComputer[c]) {
+      alert("Computador ganhou!");
+    }
+    else {
+      alert("Empate!");
+    }
+    c++;
   }
   else {
     alert("tudo ok")
     //mostrar resultados
   }
 }
+/* ------------ */
 
 function getRandomNumber(min, max) { 
   return Math.floor(Math.random() * (max - min + 1) ) + min;
