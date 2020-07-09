@@ -39,7 +39,9 @@ function selectCards() {
   imgC.setAttribute('width',172);
   imgC.setAttribute('height',264);
 
-  if (c < 10) {
+  let result = document.querySelector("pre#result")
+
+  if (c < 10) { //display cards randomly selected
     var index = getRandomNumber(0, deck.length-1);
     var card = deck[index];
   
@@ -60,25 +62,44 @@ function selectCards() {
     deck.splice(deck.indexOf(card), 1);
     vComputer.push(Number(card.replace(/\D+/g, "")));
 
-  /* ------------ */ 
-
     if (vPlayer[c] > vComputer[c]) {
-      alert("Jogador ganhou!");
+      result.textContent = `Player win!`;
     }
     else if (vPlayer[c] < vComputer[c]) {
-      alert("Computador ganhou!");
+      result.textContent = `Computer win!`;
     }
     else {
-      alert("Empate!");
+      result.textContent = `It's a tie!`;
     }
     c++;
   }
   else {
-    alert("tudo ok")
-    //mostrar resultados
+    //show results
+    result.innerHTML = `Score: ${storsData(vPlayer, vComputer)}`;
   }
 }
 /* ------------ */
+
+function storsData (vPlayer, vComputer){
+  let playerScore = 0;
+  let computerScore = 0;
+  let ties = 0;
+  var res = "";
+
+  for (pos in vPlayer) {
+    if (vPlayer[pos] > vComputer[pos]) {
+      playerScore++;
+    }
+    else if (vPlayer[pos] < vComputer[pos]) {
+      computerScore++;
+    }
+    else {
+      ties++;
+    }
+  }
+  res += `\nPlayer Score ${playerScore}\nComputer Score ${computerScore}\nTies ${ties}`
+  return res;
+}
 
 function getRandomNumber(min, max) { 
   return Math.floor(Math.random() * (max - min + 1) ) + min;
