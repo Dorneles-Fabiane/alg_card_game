@@ -55,7 +55,7 @@ function selectCards() {
     var index = getRandomNumber(0, deck.length-1);
     var card = deck[index];
   
-    computerCardImg.innerHTML = "X";
+    computerCardImg.innerHTML = "";
     imgC.setAttribute('src', 'img/' + card + '.png');
     computerCardImg.appendChild(imgC);
 

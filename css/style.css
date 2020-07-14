@@ -1,3 +1,22 @@
-div {
-    display: inline;
+body
+{
+    background: url("../img/fundo.png") no-repeat;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+#btnSelectCard{
+    width: 10%;
+    align-items: center;
+    height: 35px;
+    border: none;
+    justify-content: center;
+    border-radius: 4px;
+    background: rgb(61, 61, 187);
+    cursor: pointer;
+}
+
+li {
+    list-style: none;
 }
